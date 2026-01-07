@@ -48,5 +48,11 @@
     <main class="container my-5">
       <%= yield %>  <!-- This inserts the content from your views (index, new, show, etc.) -->
     </main>
+    <footer class="bg-dark text-white py-4 mt-auto">
+      <div class="container text-center">
+        <p class="mb-1">&copy; <%= Time.now.year %> Library App. All rights reserved.</p>
+        <small class="text-muted">Built with Ruby on Rails & Bootstrap</small>
+      </div>
+    </footer>
   </body>
 </html>
