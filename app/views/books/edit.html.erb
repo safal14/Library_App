@@ -1,0 +1,28 @@
+<h1 class="text-center mt-4 mb-5">Edit Book</h1>
+
+<%= form_with model: @book, method: :patch do |form| %>
+
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :author, class: "form-label" %>
+    <%= form.text_field :author, class: "form-control" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :rating, class: "form-label" %>
+    <%= form.number_field :rating, in: 1..5, class: "form-control" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.submit "Update Book", class: "btn btn-success btn-lg" %>
+  </div>
+
+<% end %>
+
+<div class="text-center mt-4">
+  <%= link_to "← Back to all books", books_path, class: "btn btn-outline-primary btn-lg px-5" %>
+</div>

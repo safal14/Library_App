@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :books
+ root "books#index"
 get "/books", to: "books#index"
-  get '/books/new', to: 'books#new'
-  get "books/:id", to: "books#show"
+  get '/books/new', to: 'books#new', as: :new_book
+  get "books/:id", to: "books#show", as: :book
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,6 +12,10 @@ get "/books", to: "books#index"
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   post "/books", to:"books#create"
+
+  get "/books/:id/edit", to: "books#edit", as: :edit_book     # Show edit form
+  patch "/books/:id", to: "books#update"                       # Save changes
+  delete "/books/:id", to: "books#destroy"
   # Defines the root path route ("/")
   # root "posts#index"
 end
