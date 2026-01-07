@@ -1,28 +1,15 @@
-<h1 class="text-center mt-4 mb-5">Edit Book</h1>
+<div class="container my-5">
+  <h1 class="text-center mb-5 fw-bold text-primary">Edit Book</h1>
 
-<%= form_with model: @book, method: :patch do |form| %>
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
 
-  <div class="mb-3">
-    <%= form.label :title, class: "form-label" %>
-    <%= form.text_field :title, class: "form-control" %>
+      <%= render "form", book: @book, submit_text: "Update Book" %>
+
+      <div class="text-center mt-4">
+        <%= link_to "← Back to book", book_path(@book), class: "btn btn-outline-primary" %>
+      </div>
+
+    </div>
   </div>
-
-  <div class="mb-3">
-    <%= form.label :author, class: "form-label" %>
-    <%= form.text_field :author, class: "form-control" %>
-  </div>
-
-  <div class="mb-4">
-    <%= form.label :rating, class: "form-label" %>
-    <%= form.number_field :rating, in: 1..5, class: "form-control" %>
-  </div>
-
-  <div class="mb-4">
-    <%= form.submit "Update Book", class: "btn btn-success btn-lg" %>
-  </div>
-
-<% end %>
-
-<div class="text-center mt-4">
-  <%= link_to "← Back to all books", books_path, class: "btn btn-outline-primary btn-lg px-5" %>
 </div>
