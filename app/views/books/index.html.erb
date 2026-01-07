@@ -1,9 +1,42 @@
-<h1>All Books</h1>
+<div class="container my-5">
+  <h1 class="text-center mb-5 fw-bold text-primary">All Books</h1>
 
-<% @books.each do |book| %>
-  <div class="article">
-    <h2><%= book.title %></h2>
-<%= link_to "Read more", "/books/#{book.id}" %>
-
-  </div>
-<% end %>
+  <% if @books.any? %>
+    <!-- Responsive table - works great on mobile too -->
+    <div class="table-responsive">
+      <table class="table table-hover table-striped align-middle shadow-sm">
+        <thead class="table-dark">
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th class="text-center">Rating</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td class="fw-semibold">
+                <%= link_to book.title, book_path(book), class: "text-decoration-none text-dark" %>
+              </td>
+              <td><%= book.author %></td>
+              <td class="text-center">
+                <% if book.rating.present? %>
+                  <span class="fw-bold"><%= book.rating %> / 5</span>
+                <% else %>
+                  <span class="text-muted">—</span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <!-- Message when no books exist -->
+    <div class="text-center py-5">
+      <p class="lead text-muted">Your library is empty.</p>
+      <%= link_to "Add your first book", new_book_path, class: "btn btn-success btn-lg" %>
+    </div>
+  <% end %>
+</div>
