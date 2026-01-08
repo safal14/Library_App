@@ -46,6 +46,13 @@
 
     <!-- Main content area: Where page content (like books list) goes -->
     <main class="container my-5">
+    <% flash.each do |type, message| %>
+    <% next unless message.present? %>
+    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+      <%= message %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
       <%= yield %>  <!-- This inserts the content from your views (index, new, show, etc.) -->
     </main>
     <footer class="bg-dark text-white py-4 mt-auto">
