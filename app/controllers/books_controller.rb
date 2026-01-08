@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  include BooksHelper
   def index
     @books = Book.all 
   end
