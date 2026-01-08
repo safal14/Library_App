@@ -18,7 +18,7 @@
               <td class="fw-semibold">
                 <%= link_to book.title, book_path(book), class: "text-decoration-none text-dark" %>
               </td>
-              <td><%= book.author %></td>
+              <td><%= formatted_author(book) %></td>
               <td class="text-center">
                 <% if book.rating.present? %>
                   <span class="fw-bold"><%= book.rating %> / 5</span>
