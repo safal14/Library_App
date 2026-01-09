@@ -8,7 +8,11 @@ class RentalsController < ApplicationController
 
     redirect_to checkout_path, notice: "Book successfully checked out!"
   end
-
+  def history
+  @customers = Customer.all
+  @selected_customer = Customer.find_by(id: params[:customer_id])
+  @rentals = @selected_customer.rentals.includes(:book) if @selected_customer
+  end
   private
 
   def rental_params
