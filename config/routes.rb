@@ -15,6 +15,8 @@ get "/books", to: "books#index"
   get "/books/:id/edit", to: "books#edit", as: :edit_book     # Show edit form
   patch "/books/:id", to: "books#update"                       # Save changes
   delete "/books/:id", to: "books#destroy"
+  get '/checkout', to: 'rentals#checkout', as: :checkout
+  post '/checkout', to: 'rentals#process_checkout'
   # Defines the root path route ("/")
   # root "posts#index"
 end

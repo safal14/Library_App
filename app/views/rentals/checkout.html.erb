@@ -1,0 +1,36 @@
+<div class="container my-5">
+  <h1 class="text-center mb-5 fw-bold text-primary">Checkout a Book</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <%= form_with url: checkout_path, method: :post, local: true do |form| %>
+        <div class="mb-3">
+          <%= form.label :book_id, "Select Book", class: "form-label" %>
+          <%= form.collection_select :book_id, Book.all, :id, :title,
+                                     { prompt: "Choose a book" },
+                                     class: "form-select form-select-lg" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :customer_email, "Customer Email", class: "form-label" %>
+          <%= form.text_field :customer_email, class: "form-control form-control-lg", placeholder: "email@example.com" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :rented_on, "Rented On (Start Date)", class: "form-label" %>
+          <%= form.date_field :rented_on, value: Date.today, class: "form-control form-control-lg" %>
+        </div>
+
+        <div class="mb-4">
+          <%= form.label :returned_on, "Expected Return Date", class: "form-label" %>
+          <%= form.date_field :returned_on, class: "form-control form-control-lg" %>
+        </div>
+
+        <div class="text-center">
+          <%= form.submit "Checkout Book", class: "btn btn-success btn-lg px-5" %>
+          <%= link_to "← Back to Books", books_path, class: "btn btn-outline-secondary btn-lg px-5 ms-3" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
