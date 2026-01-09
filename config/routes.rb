@@ -17,6 +17,7 @@ get "/books", to: "books#index"
   delete "/books/:id", to: "books#destroy"
   get '/checkout', to: 'rentals#checkout', as: :checkout
   post '/checkout', to: 'rentals#process_checkout'
+  get '/rentals/history', to: 'rentals#history', as: :rentals_history
   # Defines the root path route ("/")
   # root "posts#index"
 end
