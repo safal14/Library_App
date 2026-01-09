@@ -1,0 +1,15 @@
+<div class="container my-5">
+  <h1 class="text-center mb-5 fw-bold text-primary">Edit Book</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+
+      <%= render "form", book: @book, submit_text: "Update Book" %>
+
+      <div class="text-center mt-4">
+        <%= link_to "← Back to book", book_path(@book), class: "btn btn-outline-primary" %>
+      </div>
+
+    </div>
+  </div>
+</div>
