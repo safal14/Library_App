@@ -1,9 +1,36 @@
+<!-- Big title at the top -->
+<h1 class="text-center mt-5 mb-4 fw-bold"><%= @book.title %></h1>
 
-<h1><%= @book.title %></h1>
+<!-- Nice box for book details -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
 
-<div class="Book">
-  <p><strong>Author:</strong> <%= @book.author %></p>
-  <p> Ratings: <%=@book.rating %> </P>
-    <%= link_to "← Back to all books", books_path, class: "btn" %>
+      <div class="p-4 bg-white rounded shadow-sm">
+
+        <!-- Author -->
+        <p class="fs-4 mb-4">
+          <strong>Author:</strong> <%= @book.author %>
+        </p>
+
+        <!-- Rating - only shows the number -->
+        <p class="fs-4 mb-5">
+          <strong>Rating:</strong>
+          <% if @book.rating.present? %>
+            <span class="fw-bold"><%= @book.rating %> / 5</span>
+          <% else %>
+            <span class="text-muted">No rating yet</span>
+          <% end %>
+        </p>
+
+        <!-- Back button - big and centered -->
+        <div class="text-center">
+          <%= link_to "← Back to all books", books_path, 
+              class: "btn btn-primary btn-lg" %>
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </div>

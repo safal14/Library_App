@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  resources :books
 get "/books", to: "books#index"
+  get '/books/new', to: 'books#new'
   get "books/:id", to: "books#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -9,7 +11,7 @@ get "/books", to: "books#index"
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
+  post "/books", to:"books#create"
   # Defines the root path route ("/")
   # root "posts#index"
 end
