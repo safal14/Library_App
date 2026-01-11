@@ -2,7 +2,7 @@ class RentalsController < ApplicationController
   def checkout
     @books = Book.all
   end
-  
+  byebug
   def process_checkout
     CheckoutService.new(params).call
 
