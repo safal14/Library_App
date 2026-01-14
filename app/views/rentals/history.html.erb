@@ -1,0 +1,45 @@
+<div class="container my-5">
+  <h1 class="text-center mb-5 fw-bold text-primary">Rental History</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <%= form_with url: rentals_history_path, method: :get, local: true do |form| %>
+        <div class="mb-4">
+          <%= form.label :customer_id, "Select Customer", class: "form-label" %>
+          <%= form.collection_select :customer_id, Customer.all, :id, :email,
+                                     { include_blank: "Choose a customer" },
+                                     class: "form-select form-select-lg" %>
+        </div>
+        <%= form.submit "View History", class: "btn btn-primary btn-lg" %>
+      <% end %>
+
+      <% if @rentals.present? %>
+        <h3 class="mt-5 mb-4">Rental History for <%= @selected_customer.email %></h3>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>Book Title</th>
+                <th>Date Rented</th>
+                <th>Date Returned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @rentals.each do |rental| %>
+                <tr>
+                  <td><%= rental.book.title %></td>
+                  <td><%= rental.rented_on.strftime("%B %d, %Y") if rental.rented_on %></td>
+                  <td><%= rental.returned_on&.strftime("%B %d, %Y") || "Not returned yet" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% elsif params[:customer_id].present? %>
+        <p class="text-center mt-5 text-muted">No rental history for this customer.</p>
+      <% end %>
+
+    </div>
+  </div>
+</div>
